@@ -31,4 +31,6 @@
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="cn.e3mall.mapper" />
     </bean>
+
+
 </beans>
