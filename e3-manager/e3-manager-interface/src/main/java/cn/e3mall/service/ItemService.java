@@ -13,4 +13,6 @@ public interface ItemService {
     public E3Result addItem(TbItem item, String desc);
 
     public E3Result updateItem(TbItem item, String desc);
+
+    public E3Result deleteItem(String ids);
 }

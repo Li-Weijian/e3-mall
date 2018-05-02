@@ -68,4 +68,14 @@ public class ItemController {
         return result;
     }
 
+    /**
+     * 删除商品
+     * */
+    @RequestMapping("/item/delete")
+    @ResponseBody
+    public E3Result deleteItem(String ids){
+        E3Result result = itemService.deleteItem(ids);
+        return result;
+    }
+
 }

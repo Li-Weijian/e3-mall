@@ -92,4 +92,21 @@ public class ItemServiceImpl implements ItemService {
         }
         return E3Result.ok();
     }
+
+    /**
+     * 删除商品
+     * */
+    @Override
+    public E3Result deleteItem(String ids) {
+        if (!ids.contains(",")){
+            itemMapper.deleteByPrimaryKey(Long.parseLong(ids));
+            return E3Result.ok();
+        }else {
+            String[] id = ids.split(",");
+            for (String i: id) {
+                itemMapper.deleteByPrimaryKey(Long.parseLong(i));
+            }
+            return E3Result.ok();
+        }
+    }
 }
