@@ -1,6 +1,7 @@
 package cn.e3mall.controller;
 
 import cn.e3.commom.easyUIGridResult.EasyUIGirdResult;
+import cn.e3.commom.utils.E3Result;
 import cn.e3mall.pojo.TbItem;
 import cn.e3mall.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,11 +37,25 @@ public class ItemController {
         return item;
     }
 
+    /**
+     * 获取商品列表
+     * */
     @RequestMapping("/item/list")
     @ResponseBody
     public EasyUIGirdResult getItemList(Integer page, Integer rows){
         EasyUIGirdResult list = itemService.getItemList(page, rows);
         return list;
+    }
+
+
+    /**
+     * 添加商品
+     * */
+    @RequestMapping("/item/save")
+    @ResponseBody
+    public E3Result addItem(TbItem item, String desc){
+        E3Result result = itemService.addItem(item, desc);
+        return result;
     }
 
 }

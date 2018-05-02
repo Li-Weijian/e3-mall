@@ -2,7 +2,9 @@ package cn.e3mall.controller;
 
 
 import cn.e3.commom.utils.FastDFSClient;
+import cn.e3.commom.utils.JsonUtils;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,9 +21,9 @@ public class PictureController {
     private String IMAGE_SERVICE_ADDR;
 
 
-    @RequestMapping(value = "/pic/upload",method = RequestMethod.POST)
+    @RequestMapping(value = "/pic/upload", produces = MediaType.TEXT_PLAIN_VALUE+";charset=utf-8")
     @ResponseBody
-    public Map picUpload(MultipartFile uploadFile){
+    public String picUpload(MultipartFile uploadFile){
 //        1、接收页面传递的图片信息uploadFile
 //        2、把图片上传到图片服务器。使用封装的工具类实现。需要取文件的内容和扩展名。
         try {
@@ -36,13 +38,15 @@ public class PictureController {
             Map map = new HashMap();
             map.put("error",0);
             map.put("url",url);
-            return map;
+            String json = JsonUtils.objectToJson(map);
+            return json;
         } catch (Exception e) {
             e.printStackTrace();
             Map map = new HashMap();
             map.put("error",1);
             map.put("message","图片上传失败");
-            return map;
+            String json = JsonUtils.objectToJson(map);
+            return json;
         }
     }
 }
