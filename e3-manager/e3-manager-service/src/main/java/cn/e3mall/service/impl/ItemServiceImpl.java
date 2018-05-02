@@ -71,4 +71,25 @@ public class ItemServiceImpl implements ItemService {
 //        7、E3Result.ok()
             return E3Result.ok();
     }
+
+    /**
+     * 更新商品
+     * */
+    @Override
+    public E3Result updateItem(TbItem item, String desc) {
+        TbItem tbItem = itemMapper.selectByPrimaryKey(item.getId());
+        item.setCreated(tbItem.getCreated());
+        item.setUpdated(new Date());
+        item.setStatus((byte) 1);
+        itemMapper.updateByPrimaryKey(item);
+
+        if (null != desc && !"".equals(desc)){
+            TbItemDesc itemDesc = new TbItemDesc();
+            itemDesc.setItemId(item.getId());
+            itemDesc.setItemDesc(desc);
+            itemDesc.setUpdated(new Date());
+            itemDescMapper.updateByPrimaryKey(itemDesc);
+        }
+        return E3Result.ok();
+    }
 }

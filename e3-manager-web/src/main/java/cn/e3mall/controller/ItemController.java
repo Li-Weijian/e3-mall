@@ -58,4 +58,14 @@ public class ItemController {
         return result;
     }
 
+    /**
+     * 更新商品
+     * */
+    @RequestMapping("/item/update")
+    @ResponseBody
+    public E3Result updateItem(TbItem item, String desc){
+        E3Result result = itemService.updateItem(item, desc);
+        return result;
+    }
+
 }

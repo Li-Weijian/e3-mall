@@ -11,4 +11,6 @@ public interface ItemService {
     public EasyUIGirdResult getItemList(int page, int rows);
 
     public E3Result addItem(TbItem item, String desc);
+
+    public E3Result updateItem(TbItem item, String desc);
 }
