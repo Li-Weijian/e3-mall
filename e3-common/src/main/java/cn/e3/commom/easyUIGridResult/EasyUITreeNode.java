@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class EasyUITreeNode implements Serializable {
 
-    //异步树的节点。具体残开easyui的异步树文档
+    //异步树的节点。具体参考easyui的异步树文档
 
     private Long id;
     private String text;
