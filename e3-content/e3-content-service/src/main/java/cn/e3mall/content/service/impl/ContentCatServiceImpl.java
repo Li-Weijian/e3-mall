@@ -69,4 +69,42 @@ public class ContentCatServiceImpl implements ContentCatService {
         }
         return E3Result.ok(contentCategory);
     }
+
+    /**
+     * 更新分类节点
+     * */
+    @Override
+    public E3Result updateContentCatNode(Long id, String name) {
+
+        TbContentCategory contentCategory = new TbContentCategory();
+        contentCategory.setId(id);
+        contentCategory.setName(name);
+
+        contentCategoryMapper.updateByPrimaryKeySelective(contentCategory);
+        return E3Result.ok();
+    }
+
+    @Override
+    public E3Result deleteContentCatNode(Long id) {
+        TbContentCategory category = contentCategoryMapper.selectByPrimaryKey(id);
+        //1. 判断是否为父节点，如果是，不允许删除
+        if (category.getIsParent()){
+            return E3Result.build(500,"父节点不允许删除，如需删除，必须清空所有子节点");
+        }else {
+            Long parentId = category.getParentId();
+            contentCategoryMapper.deleteByPrimaryKey(id);
+
+            //2. 删除后判断是否有同级节点，如果没有，将父节点的isParent设置为false
+            TbContentCategoryExample contentCategoryExample = new TbContentCategoryExample();
+            TbContentCategoryExample.Criteria criteria = contentCategoryExample.createCriteria();
+            criteria.andParentIdEqualTo(parentId);
+            int count = contentCategoryMapper.countByExample(contentCategoryExample);
+            if (count == 0){
+                TbContentCategory contentCategory = contentCategoryMapper.selectByPrimaryKey(parentId);
+                contentCategory.setIsParent(false);
+                contentCategoryMapper.updateByPrimaryKeySelective(contentCategory);
+            }
+        }
+        return E3Result.ok();
+    }
 }

@@ -33,4 +33,20 @@ public class ContentCatController {
         return result;
     }
 
+
+    @RequestMapping("/content/category/update")
+    @ResponseBody
+    public E3Result updateContentCatNode(Long id, String name){
+        E3Result result = contentCatService.updateContentCatNode(id, name);
+        return result;
+    }
+
+    @RequestMapping("/content/category/delete/")
+    @ResponseBody
+    public E3Result deleteContentCatNode(Long id){
+        E3Result result = contentCatService.deleteContentCatNode(id);
+        return result;
+    }
+
+
 }

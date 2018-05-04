@@ -15,8 +15,8 @@ public class TestPublish {
       /*  while (true){
             Thread.sleep(1000);
         }*/
-      System.out.println("服务进程开始。。。");
+   /*   System.out.println("服务进程开始。。。");
       System.in.read();
-      System.out.println("服务进程结束");
+      System.out.println("服务进程结束");*/
     }
 }

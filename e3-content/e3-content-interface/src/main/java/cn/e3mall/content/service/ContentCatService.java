@@ -12,4 +12,8 @@ public interface ContentCatService {
 
     public E3Result createContentCatNode(TbContentCategory contentCategory);
 
+    public E3Result updateContentCatNode(Long id, String name);
+
+    public E3Result deleteContentCatNode(Long id);
+
 }
