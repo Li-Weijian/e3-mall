@@ -1,6 +1,7 @@
 package cn.e3mall.content.service.impl;
 
 import cn.e3.commom.easyUIGridResult.EasyUIGirdResult;
+import cn.e3.commom.utils.E3Result;
 import cn.e3mall.content.service.ContentService;
 import cn.e3mall.mapper.TbContentMapper;
 import cn.e3mall.pojo.TbContent;
@@ -10,6 +11,7 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -38,4 +40,27 @@ public class ContentServiceImpl implements ContentService {
 
         return easyUIGirdResult;
     }
+
+    /**
+     * 添加内容
+     * */
+    @Override
+    public E3Result addContent(TbContent content) {
+        content.setCreated(new Date());
+        content.setUpdated(new Date());
+        contentMapper.insertSelective(content);
+        return E3Result.ok();
+    }
+
+    @Override
+    public List<TbContent> getContentByCid(Long cid) {
+
+        TbContentExample contentExample = new TbContentExample();
+        TbContentExample.Criteria criteria = contentExample.createCriteria();
+        criteria.andCategoryIdEqualTo(cid);
+        List<TbContent> list = contentMapper.selectByExample(contentExample);
+        return list;
+    }
+
+
 }
