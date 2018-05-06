@@ -1,6 +1,6 @@
 package cn.e3mall.service.impl;
 
-import cn.e3.commom.easyUIGridResult.EasyUIGirdResult;
+import cn.e3.commom.pojo.EasyUIGirdResult;
 import cn.e3.commom.utils.E3Result;
 import cn.e3.commom.utils.IDUtils;
 import cn.e3mall.mapper.TbItemDescMapper;

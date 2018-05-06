@@ -1,8 +1,6 @@
 package cn.e3mall.service;
 
-import cn.e3.commom.easyUIGridResult.EasyUITreeNode;
-import cn.e3.commom.utils.E3Result;
-import cn.e3mall.pojo.TbContentCategory;
+import cn.e3.commom.pojo.EasyUITreeNode;
 
 import java.util.List;
 

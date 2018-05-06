@@ -15,6 +15,9 @@
         <module name="e3managerpojo" />
         <module name="e3managerservice" />
         <module name="e3portalweb" />
+        <module name="e3searchinterface" />
+        <module name="e3searchservice" />
+        <module name="e3searchweb" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

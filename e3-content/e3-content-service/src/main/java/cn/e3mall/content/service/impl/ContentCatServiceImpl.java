@@ -1,6 +1,6 @@
 package cn.e3mall.content.service.impl;
 
-import cn.e3.commom.easyUIGridResult.EasyUITreeNode;
+import cn.e3.commom.pojo.EasyUITreeNode;
 import cn.e3.commom.utils.E3Result;
 import cn.e3mall.content.service.ContentCatService;
 import cn.e3mall.mapper.TbContentCategoryMapper;

@@ -1,6 +1,6 @@
 package cn.e3mall.content.service.impl;
 
-import cn.e3.commom.easyUIGridResult.EasyUIGirdResult;
+import cn.e3.commom.pojo.EasyUIGirdResult;
 import cn.e3.commom.jedis.JedisClient;
 import cn.e3.commom.utils.E3Result;
 import cn.e3.commom.utils.JsonUtils;

@@ -11,7 +11,7 @@ public class TestPublish {
 
     @Test
     public void publishService() throws IOException {
-        ApplicationContext application = new ClassPathXmlApplicationContext("classpath:spring/applicationContext-*.xml");
+//        ApplicationContext application = new ClassPathXmlApplicationContext("classpath:spring/applicationContext-*.xml");
       /*  while (true){
             Thread.sleep(1000);
         }*/
