@@ -5,13 +5,10 @@ import cn.e3.commom.utils.E3Result;
 import cn.e3mall.search.mapper.ItemMapper;
 import cn.e3mall.search.service.SearchItemService;
 import org.apache.solr.client.solrj.SolrServer;
-import org.apache.solr.client.solrj.SolrServerException;
-import org.apache.solr.client.solrj.impl.HttpSolrServer;
 import org.apache.solr.common.SolrInputDocument;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
 import java.util.List;
 
 @Service

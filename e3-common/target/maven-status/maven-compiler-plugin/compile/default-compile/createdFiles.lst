@@ -1,3 +1,4 @@
 cn\e3\commom\utils\JsonUtils.class
 cn\e3\commom\utils\E3Result.class
 cn\e3\commom\utils\IDUtils.class
+cn\e3\commom\pojo\SearchResult.class
