@@ -11,8 +11,6 @@ import java.io.IOException;
  * Topic模式：Topic模式是广播/订阅模式，消息发送之后不会保存在服务器，只有在消费者开启消息接收监听时才能被接收到。
  *
  * */
-
-
 public class TestActiveMQ {
     /**
      * 测试queue发送消息

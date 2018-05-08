@@ -29,6 +29,7 @@ public class SearchController {
         model.addAttribute("totalPages",result.getTotalPages());
         model.addAttribute("query",keyword);
 
+
         return "search";
     }
 
