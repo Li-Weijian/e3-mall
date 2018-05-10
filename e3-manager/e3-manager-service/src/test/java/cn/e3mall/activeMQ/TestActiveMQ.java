@@ -124,11 +124,9 @@ public class TestActiveMQ {
                 }
             });
             System.out.println("Topic监听服务启动。。。");
-            System.in.read();
+//            System.in.read();
             System.out.println("Topic监听服务关闭");
         } catch (JMSException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
             e.printStackTrace();
         }
     }

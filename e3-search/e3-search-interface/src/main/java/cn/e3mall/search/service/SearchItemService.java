@@ -7,4 +7,6 @@ import java.io.IOException;
 public interface SearchItemService {
 
     public E3Result importAllItems();
+
+    public E3Result addDocumentById(Long id);
 }

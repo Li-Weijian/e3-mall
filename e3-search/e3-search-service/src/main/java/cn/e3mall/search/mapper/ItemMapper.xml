@@ -17,4 +17,22 @@
             c.`status` = 1;
     </select>
 
+    <select id="getItemById" resultType="cn.e3.commom.pojo.SearchItem" parameterType="long">
+        SELECT
+            i.id,
+            i.title,
+            i.price,
+            i.sell_point,
+            i.image,
+            c. NAME category_name
+        FROM
+            tb_item i
+        LEFT JOIN tb_item_cat c ON i.cid = c.id
+        WHERE
+            c.`status` = 1 and
+            i.id = #{id};
+    </select>
+
+
+
 </mapper>
