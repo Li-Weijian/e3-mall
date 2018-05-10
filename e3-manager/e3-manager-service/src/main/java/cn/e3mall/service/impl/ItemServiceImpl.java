@@ -1,8 +1,10 @@
 package cn.e3mall.service.impl;
 
+import cn.e3.commom.jedis.JedisClient;
 import cn.e3.commom.pojo.EasyUIGirdResult;
 import cn.e3.commom.utils.E3Result;
 import cn.e3.commom.utils.IDUtils;
+import cn.e3.commom.utils.JsonUtils;
 import cn.e3mall.mapper.TbItemDescMapper;
 import cn.e3mall.mapper.TbItemMapper;
 import cn.e3mall.pojo.TbItem;
@@ -11,7 +13,9 @@ import cn.e3mall.pojo.TbItemExample;
 import cn.e3mall.service.ItemService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
 import org.springframework.stereotype.Service;
@@ -30,13 +34,42 @@ public class ItemServiceImpl implements ItemService {
     private TbItemDescMapper itemDescMapper;
     @Autowired
     private JmsTemplate jmsTemplate;
+    @Autowired
+    private JedisClient jedisClient;
     @Resource
     private Destination topicDestination;   //根据配置文件中id进行命名
 
+    @Value("${ITEM_CACHE_PRE}")
+    private String ITEM_CACHE_PRE;          //  商品缓存的key前缀
+    @Value("${CACHE_TIMEOUT}")
+    private int CACHE_TIMEOUT;              //缓存过期时间
 
+    /**
+     * 根据id查询商品
+     * */
     @Override
     public TbItem getItemById(long itemId) {
+        try {
+            //查询缓存
+            String tbItem = jedisClient.get(ITEM_CACHE_PRE+":"+itemId+":BASE");
+            if (StringUtils.isNotBlank(tbItem)){
+                TbItem item = JsonUtils.jsonToPojo(tbItem,TbItem.class);
+                return item;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        //查询商品
         TbItem item = itemMapper.selectByPrimaryKey(itemId);
+
+        try {
+            //添加到缓存
+            String json = JsonUtils.objectToJson(item);
+            jedisClient.set(ITEM_CACHE_PRE+":"+itemId+":BASE",json);
+            jedisClient.expire(ITEM_CACHE_PRE+":"+itemId+":BASE",CACHE_TIMEOUT);        //设置缓存过期时间
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return item;
     }
 
@@ -127,4 +160,35 @@ public class ItemServiceImpl implements ItemService {
             return E3Result.ok();
         }
     }
+
+
+    /**
+     * 根据商品id查询商品描述
+     * */
+    @Override
+    public TbItemDesc getItemDescById(long itemId) {
+        try {
+            //查询缓存
+            String itemDesc = jedisClient.get(ITEM_CACHE_PRE+":"+itemId+":DESC");
+            if (StringUtils.isNotBlank(itemDesc)){
+                TbItemDesc desc = JsonUtils.jsonToPojo(itemDesc, TbItemDesc.class);
+                return desc;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        TbItemDesc itemDesc = itemDescMapper.selectByPrimaryKey(itemId);
+        try {
+            //添加到缓存
+            String json = JsonUtils.objectToJson(itemDesc);
+            jedisClient.set(ITEM_CACHE_PRE+":"+itemId+":DESC",json);
+            jedisClient.expire(ITEM_CACHE_PRE+":"+itemId+":DESC",CACHE_TIMEOUT);        //设置缓存过期时间
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return itemDesc;
+    }
+
+
+
 }

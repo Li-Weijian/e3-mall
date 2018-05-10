@@ -3,6 +3,7 @@
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/e3-content/e3-content-service" />
+    <file type="web" url="file://$PROJECT_DIR$/e3-item-web" />
     <file type="web" url="file://$PROJECT_DIR$/e3-manager-web" />
     <file type="web" url="file://$PROJECT_DIR$/e3-manager/e3-manager-service" />
     <file type="web" url="file://$PROJECT_DIR$/e3-portal-web" />

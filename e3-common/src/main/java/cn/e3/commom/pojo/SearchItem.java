@@ -58,4 +58,8 @@ public class SearchItem implements Serializable {
         this.id = id;
     }
 
+    public String[] getImages(){
+        String[] images = this.image.split(",");
+        return images;
+    }
 }

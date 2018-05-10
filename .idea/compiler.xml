@@ -10,6 +10,7 @@
         <module name="e3common" />
         <module name="e3contentinterface" />
         <module name="e3contentservice" />
+        <module name="e3itemweb" />
         <module name="e3managerdao" />
         <module name="e3managerinterface" />
         <module name="e3managerpojo" />
