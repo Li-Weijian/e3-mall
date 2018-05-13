@@ -31,14 +31,14 @@ public class LoginController {
 
         //调用方法进行校验用户
         E3Result result = loginService.login(username, password);
-        //获取token
-        String token = result.getData().toString();
-        //设置cookie
-        CookieUtils.setCookie(request,response,"token",token);
+        if (null != result.getData() && !"".equals(result.getData())){
+            //获取token
+            String token = result.getData().toString();
+            //设置cookie
+            CookieUtils.setCookie(request,response,"token",token);
+        }
         //返回数据
         return result;
     }
-
-
 
 }
