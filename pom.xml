@@ -12,6 +12,8 @@
         <module>e3-search</module>
         <module>e3-search-web</module>
         <module>e3-item-web</module>
+        <module>e3-sso</module>
+        <module>e3-sso-web</module>
     </modules>
     <groupId>cn.e3mall</groupId>
     <artifactId>e3-parent</artifactId>

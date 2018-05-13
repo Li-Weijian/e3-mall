@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="e3-manager-web" />
+        <module name="e3-search-service" />
         <module name="e3common" />
         <module name="e3contentinterface" />
         <module name="e3contentservice" />
@@ -17,12 +18,16 @@
         <module name="e3managerservice" />
         <module name="e3portalweb" />
         <module name="e3searchinterface" />
-        <module name="e3searchservice" />
         <module name="e3searchweb" />
+        <module name="e3ssointerface" />
+        <module name="e3ssoservice" />
+        <module name="e3ssoweb" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="e3-sso-service" target="1.5" />
       <module name="e3managerweb" target="1.7" />
+      <module name="e3searchservice" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>
