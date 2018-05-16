@@ -8,6 +8,8 @@
         <outputRelativeToContentRoot value="true" />
         <module name="e3-manager-web" />
         <module name="e3-search-service" />
+        <module name="e3cartinterface" />
+        <module name="e3cartservice" />
         <module name="e3cartweb" />
         <module name="e3common" />
         <module name="e3contentinterface" />

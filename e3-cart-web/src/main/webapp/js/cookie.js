@@ -145,7 +145,7 @@ function isOnline(wwwurl,homeurl,passporturl){
 	$.getJSON( wwwurl+"/ajax/isOnline/?callback=?", function( data ) {
 		if (data.welcome){
 			passporturl = passporturl.replace('https', 'http');
-			$('#login').html('<span class="logininfo"> '+data.welcome+'</span> <a href="'+passporturl+'/service/logout/?returnUrl='+escape(document.location.href)+'">[退出]</a>'); 
+			$('#login').html('<span class="logininfo"> '+data.welcome+'</span> <a href="'+passporturl+'/service/logout/?returnUrl='+escape(document.location.href)+'">[退出]</a>');
 		}else{
 			//var nickName = decodeURI(getCookie('_nickName'));
 			var nickName = decodeURI(decodeURI(escape(getCookie('_nickName'))));

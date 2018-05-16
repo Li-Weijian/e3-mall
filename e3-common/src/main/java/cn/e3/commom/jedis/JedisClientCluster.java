@@ -4,9 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import redis.clients.jedis.JedisCluster;
 
+import java.util.List;
+
 public class JedisClientCluster implements JedisClient {
-	
+
+
 	private JedisCluster jedisCluster;
+
 
 	public JedisCluster getJedisCluster() {
 		return jedisCluster;
@@ -60,5 +64,21 @@ public class JedisClientCluster implements JedisClient {
 	public Long hdel(String key, String... field) {
 		return jedisCluster.hdel(key, field);
 	}
+
+	@Override
+	public Boolean hexists(String key, String field) {
+		return jedisCluster.hexists(key, field);
+	}
+
+	@Override
+	public List<String> hvals(String key) {
+		return jedisCluster.hvals(key);
+	}
+
+	@Override
+	public Long del(String key) {
+		return jedisCluster.del(key);
+	}
+
 
 }

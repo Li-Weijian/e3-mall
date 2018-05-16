@@ -2031,7 +2031,7 @@ function isOnline(home_url,passport_url){
 	$.getJSON( "/ajax/isOnline/?callback=?", function( data ) {
 		if (data.welcome){
 			passport_url = passport_url.replace('https', 'http');
-			$('#login').html('<span class="logininfo"> '+data.welcome+'</span> <a href="'+passport_url+'/service/logout/?returnUrl='+passport_url+'/">[退出]</a>'); 
+			$('#login').html('<span class="logininfo"> '+data.welcome+'</span> <a href="'+passport_url+'/service/logout/?returnUrl='+passport_url+'/">[退出]</a>');
 		}else{
 			var nickName = decodeURI(getCookie('_nickName'));
 			nickName = nickName?nickName:'嘿';
@@ -2046,7 +2046,7 @@ function isOnline(home_url,passport_url){
 			$('#login').html(welComeMsg+'<a href="'+passport_url+'/?returnUrl='+escape(document.location.href)+'">请登录</a>&nbsp;&nbsp;<a href="'+passport_url+'/reg/?returnUrl='+escape(document.location.href)+'">免费注册</a>');
 		}
 		if(data.qqcb){
-			$('#login').html('<span class="logininfo"> '+data.welcome+'</span> <a href="'+home_url+'/service/logout/?returnUrl='+passport_url+'/">[退出]</a>'); 
+			$('#login').html('<span class="logininfo"> '+data.welcome+'</span> <a href="'+home_url+'/service/logout/?returnUrl='+passport_url+'/">[退出]</a>');
 			$('#qqcb').html(data.qqcb); 
 		}
 	});
