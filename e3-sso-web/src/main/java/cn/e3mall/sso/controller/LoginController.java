@@ -20,8 +20,9 @@ public class LoginController {
     private LoginService loginService;
 
     @RequestMapping("/page/{page}")
-    public String toLogin(@PathVariable String page){
+    public String toLogin(@PathVariable String page,String redirect,HttpServletRequest request){
 
+        request.setAttribute("redirect",redirect);
         return page;
     }
 

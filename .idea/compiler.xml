@@ -19,6 +19,9 @@
         <module name="e3managerinterface" />
         <module name="e3managerpojo" />
         <module name="e3managerservice" />
+        <module name="e3orderinterface" />
+        <module name="e3orderservice" />
+        <module name="e3orderweb" />
         <module name="e3portalweb" />
         <module name="e3searchinterface" />
         <module name="e3searchweb" />
